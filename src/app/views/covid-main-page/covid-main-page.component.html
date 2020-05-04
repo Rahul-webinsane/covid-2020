@@ -1,0 +1,170 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Covid-19 Global Status Report <img id="earth" src="../../../assets/svg/earth.svg"></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+          <button type="button" class="btn btn-transparent p-0 float-right">
+            <i class="icon-location-pin"></i>
+          </button>
+          <div>Confirmed</div>
+          <div class="text-value">{{numberConfirmed}}</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas baseChart class="chart"
+          [datasets]="lineChart2Data"
+          [labels]="lineChart2Labels"
+          [options]="lineChart2Options"
+          [colors]="lineChart2Colours"
+          [legend]="lineChart2Legend"
+          [chartType]="lineChart2Type"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+          <div>Death</div>
+          <div class="text-value">{{numberDeaths}}</div>
+
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas baseChart class="chart"
+                  [datasets]="lineChart1Data"
+                  [labels]="lineChart1Labels"
+                  [options]="lineChart1Options"
+                  [colors]="lineChart1Colours"
+                  [legend]="lineChart1Legend"
+                  [chartType]="lineChart1Type"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+          <div>Recoverd</div>
+          <div class="text-value">{{numberRecoverd}}</div>
+
+        </div>
+        <div class="chart-wrapper mt-3" style="height:70px;">
+          <canvas baseChart class="chart"
+          [datasets]="lineChart3Data"
+          [labels]="lineChart3Labels"
+          [options]="lineChart3Options"
+          [colors]="lineChart3Colours"
+          [legend]="lineChart3Legend"
+          [chartType]="lineChart3Type"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+          <div>Active</div>
+          <div class="text-value">{{numberActive}}</div>
+
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas baseChart class="chart"
+          [datasets]="barChart1Data"
+          [labels]="barChart1Labels"
+          [options]="barChart1Options"
+          [colors]="barChart1Colours"
+          [legend]="barChart1Legend"
+          [chartType]="barChart1Type"></canvas>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+
+  <div class="row">
+    <div class="col-12">
+      <!-- <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="c" #c (change)="updateChart($event.target.value)" name="optradio">Confirmed
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="d" #c (change)="updateChart($event.target.value)" name="optradio">Deaths
+        </label>
+      </div>
+      <div class="form-check-inline">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="r" #c (change)="updateChart($event.target.value)" name="optradio">Recoverd
+        </label>
+      </div>
+      <div class="form-check-inline disabled">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" value="a" #c (change)="updateChart($event.target.value)" name="optradio" >Active
+        </label>
+      </div> -->
+      <div class="ui form">
+        <div class="inline fields">
+          <label>Select Cases Type:</label>
+          <div class="form-check-inline">
+            <div class="ui radio checkbox">
+              <input type="radio" value="c" #c (change)="updateChart($event.target.value)" name="caseType" checked="checked">
+              <label>Confirmed</label>
+            </div>
+          </div>
+          <div class="form-check-inline">
+            <div class="ui radio checkbox">
+              <input type="radio" value="d" #d (change)="updateChart($event.target.value)" name="caseType">
+              <label>Deaths</label>
+            </div>
+          </div>
+          <div class="form-check-inline">
+            <div class="ui radio checkbox">
+              <input type="radio" value="r" #r (change)="updateChart($event.target.value)" name="caseType">
+              <label>Recoverd</label>
+            </div>
+          </div>
+          <div class="form-check-inline">
+            <div class="ui radio checkbox">
+              <input type="radio" value="a" #a (change)="updateChart($event.target.value)" name="caseType">
+              <label>Active</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

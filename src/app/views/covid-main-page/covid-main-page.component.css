@@ -1,0 +1,11 @@
+h1 {
+    font-style: italic;
+    font-family: thahoma;
+    color: #20a8d8;
+    justify-content: center;
+}
+
+#earth {
+width: 69px;
+height: 55px;
+}
